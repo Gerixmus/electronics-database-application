@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElectronicsDatabase.Pages.PartListPage"
+             Title="PartListPage"
+             xmlns:vm="clr-namespace:ElectronicsDatabase.Models.ViewModels"
+             xmlns:models="clr-namespace:ElectronicsDatabase.Models"
+             x:DataType="vm:PartsViewModel">
+    <FlexLayout Direction="Column">
+        <Frame Margin="5" Padding="5" FlexLayout.Basis="250">
+            <VerticalStackLayout Padding="10">
+                <Entry Placeholder="Name" Text="{Binding Part.name}"/>
+                <Entry Placeholder="Amount" Text="{Binding Part.amount}"/>
+                <Entry Placeholder="Description" Text="{Binding Part.description}"/>
+                <Button Text="Add Part" Margin="10" Command="{Binding AddCommand}"/>
+            </VerticalStackLayout>
+        </Frame>
+        <ListView FlexLayout.Grow="1" ItemsSource="{Binding Parts}" ItemTapped="ListView_ItemTapped">
+            <ListView.Header>
+                <VerticalStackLayout BackgroundColor="#512BD4" Padding="5">
+                    <Label HorizontalOptions="Center" Text="Parts" TextColor="White" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:Part}">
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Add padding to the labels -->
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding id}" FontSize="16" FontAttributes="Bold" Margin="5"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding name}" FontSize="16" Margin="5"/>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+
+
+        </ListView>
+    </FlexLayout>
+</ContentPage>

@@ -1,0 +1,1 @@
+C:\Users\gerix\source\repos\ElectronicsDatabase\ElectronicsDatabase\ElectronicsDatabase.csproj;x64
